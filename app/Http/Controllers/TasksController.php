@@ -8,9 +8,9 @@ use App\Task;
 
 class TasksController extends Controller
 {
-    public function __construct(){
-   $this->middleware('auth');
-}
+//     public function __construct(){
+//   $this->middleware('auth');
+// }
     
     public function index()
     {
@@ -84,6 +84,7 @@ class TasksController extends Controller
      */
    public function show($id)
     {
+        if (\Auth::id() === $micropost->user_id) {
         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
 
@@ -91,6 +92,9 @@ class TasksController extends Controller
         return view('tasks.show', [
             'task' => $task,
         ]);
+        }
+         // Welcomeビューでそれらを表示
+        return view('welcome', $data);
         
     }
 
