@@ -8,9 +8,9 @@ use App\Task;
 
 class TasksController extends Controller
 {
-    public function __construct(){
-    $this->middleware('auth', ['only' => ['show']]);
-    }
+    // public function __construct(){
+    // $this->middleware('auth', ['only' => ['show']]);
+    // }
     
     public function index()
     {
@@ -86,11 +86,16 @@ class TasksController extends Controller
     {
         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
-
+        
+        if($data->user_id == auth()->id()){
         // メッセージ詳細ビューでそれを表示
         return view('tasks.show', [
             'task' => $task,
         ]);
+        
+        }else{
+        return redirect('/');
+        }
         
     }
 
