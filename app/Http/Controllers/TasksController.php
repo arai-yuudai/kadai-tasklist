@@ -8,9 +8,9 @@ use App\Task;
 
 class TasksController extends Controller
 {
-    // public function __construct(){
-    // $this->middleware('auth', ['only' => ['show']]);
-    // }
+    public function __construct(){
+    $this->middleware('auth', ['only' => ['show','index','create']]);
+    }
     
     public function index()
     {
