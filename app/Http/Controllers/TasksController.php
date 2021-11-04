@@ -8,11 +8,10 @@ use App\Task;
 
 class TasksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+   $this->middleware('auth');
+}
+    
     public function index()
     {
         $data = [];
@@ -92,6 +91,7 @@ class TasksController extends Controller
         return view('tasks.show', [
             'task' => $task,
         ]);
+        
     }
 
     /**
