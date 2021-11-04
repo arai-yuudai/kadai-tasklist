@@ -89,14 +89,12 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
         
         
-        if (\Auth::id() === $micropost->user_id) {
+        
         // メッセージ詳細ビューでそれを表示
         return view('tasks.show', [
             'task' => $task,
         ]);
         }
-         // Welcomeビューでそれらを表示
-        return view('welcome', $data);
         
     }
 
