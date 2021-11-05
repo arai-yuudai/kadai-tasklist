@@ -96,7 +96,7 @@ class TasksController extends Controller
         ]);
         }
         else {
-            return view('welcome', $data);
+            return redirect('/');
         }
     }
 
