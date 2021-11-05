@@ -96,6 +96,7 @@ class TasksController extends Controller
             'task' => $task,
         ]);
         }
+        return view('welcome', $data);
         
         
     }
