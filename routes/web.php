@@ -2,7 +2,7 @@
 
 
 Route::get('/', 'TasksController@index');
-// Route::resource('tasks', 'TasksController');
+Route::resource('tasks', 'TasksController')->middleware('auth');
    
 
 // ユーザ登録
@@ -19,4 +19,5 @@ Route::group(['middleware' => ['auth']], function () {
      // Route::get('tasks', 'TasksController@index');
      // Route::resource('tasks', 'TasksController'); 
       Route::resource('tasks', 'TasksController', ['only' => ['index', 'show']]);
+     // Route::resource('tasks', 'TasksController', ['only' => ['store', 'destroy']]);
 });
