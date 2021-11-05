@@ -84,9 +84,6 @@ class TasksController extends Controller
      */
    public function show($id)
     {
-        $task = \App\Task::findOrFail($id);
-        
-        if (\Auth::id() === $task->user_id) {
         
         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
@@ -95,8 +92,6 @@ class TasksController extends Controller
         return view('tasks.show', [
             'task' => $task,
         ]);
-        }
-        return view('welcome');
         
         
     }
